@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% extends 'todo/base.html' %}
+{% block content %}
+    <h1>Current Todos</h1>
+
+    <ul>
+    {% for todo in todos %}
+        <li>
+            {% if todo.important %}<b>{% endif %}{{ todo.title }}{% if todo.important %}</b>{% endif %}
+            {% if todo.description %} - {{ todo.description }}{% endif %}
+        </li>
+    {% endfor %}
+    </ul>
+
+{% endblock %}
+</body>
+</html>
