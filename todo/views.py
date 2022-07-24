@@ -7,10 +7,29 @@ from .forms import TodoForm
 from .models import Todo
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
+import random
 
 # Create your views here.
 def home(request):
     return render(request, 'todo/home.html')
+
+def password(request):
+    characters = list('abcdefghijklmnopqrstuvwxyz')
+
+    if request.GET.get('uppercase'):
+        characters.extend(list('ABCDEFGHIJKLMNOPQRSTUVWXYZ'))
+    if request.GET.get('special'):
+        characters.extend(list('!@#$%^&*()'))
+    if request.GET.get('numbers'):
+        characters.extend(list('0123456789'))
+
+    length = int(request.GET.get('length',12))
+
+    thepassword = ''
+    for x in range(length):
+        thepassword += random.choice(characters)
+
+    return render(request, 'todo/password.html', {'password':thepassword})
 
 def loginuser(request):
     if request.method == 'GET':
