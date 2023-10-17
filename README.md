@@ -31,3 +31,12 @@ python manage.py runserver
 
 Once the server is running, you can navigate to http://localhost:8000/ in your browser to access the application.
 
+
+## Running Tests
+
+To run tests, connected with todo app and database run next command
+
+```bash
+py manage.py test todo
+```
+
